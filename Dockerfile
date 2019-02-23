@@ -32,18 +32,18 @@ RUN add-apt-repository ppa:neovim-ppa/stable \
 WORKDIR ${WORKDIR}
 
 COPY docker/init.vim /home/${USER}/.config/nvim/init.vim
+COPY docker/zshrc /home/${USER}/zshrc
 
 RUN chown -R ${USER}:${USER} /home/${USER}
 
 USER ${USER}
 
 # Install oh-my-zsh
-RUN cd /tmp \
+RUN cd \
     && curl -OL https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh \
     && /bin/bash install.sh \
-    && rm install.sh
-
-COPY docker/zshrc /home/${USER}/.zshrc
+    && rm install.sh \
+    && mv zshrc .zshrc
 
 # Install neovim plugins
 RUN curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim \
