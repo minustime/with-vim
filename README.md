@@ -2,6 +2,9 @@
 
 Container with pre-configured shell and editor. Used to keep a familiar dev experience when exploring new languages, tools, etc.
 
+![with-vim](./with-vim.gif)
+
+
 ## Usage
 
 ### With local files
@@ -75,10 +78,6 @@ $ git clone git@github.com:minustime/with-vim.git && cd with-vim
 
 ```
 $ make code
-
-or
-
-$ make code WORKSPACE=some-directory
 ```
 
 ## Fun features
