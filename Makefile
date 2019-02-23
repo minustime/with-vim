@@ -1,6 +1,6 @@
 .PHONY: all help code build push run
 
-TAG = minustime/workspace:ubuntu-bionic
+TAG = minustime/with-vim:ubuntu-bionic
 WORKSPACE ?= workspace
 
 all: help 
@@ -16,6 +16,6 @@ code: build
 build:
 	@docker build -t ${TAG} .
 push:
-	@docker push -t ${TAG}
+	@docker push ${TAG}
 run: 
 	@docker run -it ${TAG} 

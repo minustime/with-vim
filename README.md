@@ -14,7 +14,9 @@ $ docker run -it -v `pwd`/workspace:/opt/workspace minustime/with-vim:ubuntu-bio
 
 _OR_
 
-Create a function in your .bashrc file to execute the container against any directory:
+Even better, create a shortcut for it!
+
+1. Update your `~/.bashrc` file with this function:
 
 ```
 
@@ -35,21 +37,27 @@ function with-vim {
 
 ```
 
+2. Source it 
+
 ```
-$ with-vim ./workspace
+$ source ~/.bashrc
 ```
 
-### As base for another Dockerfile
+3. Run it against any directory:
 
-As temporary base for another project:
+```
+$ with-vim .
+```
+
+### As base image
+
+This can also be used as a temporary base image for another project:
 
 ```
 FROM minustime/with-vim:ubuntu-bionic
 
 USER root
-
 RUN which nvim
-
 USER ${USER}
 
 CMD ["sleep", "infinity"]
